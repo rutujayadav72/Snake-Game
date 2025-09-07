@@ -6,7 +6,7 @@ A simple implementation of the classic **Snake Game** using **HTML**, **CSS**, a
 
 ## 🎮 Live Demo
 
-[▶ Play the Game](#)  
+[▶ Play the Game](https://rutujayadav72.github.io/Snake-Game/)  
 
 
 ---
