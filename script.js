@@ -1,8 +1,12 @@
 let inputDir = { x: 0, y: 0 };
+let hiscore = localStorage.getItem("hiscore") ? JSON.parse(localStorage.getItem("hiscore")) : 0;
+let hiscoreBox = document.getElementById('hiscoreBox');  // The element showing HiScore
+let scoreBox = document.getElementById('scoreBox');      // The element showing current score
+
 const foodSound = new Audio("audio/eat.mp3");
 const gameOverSound = new Audio("audio/gameOver.mp3");
 const moveSound = new Audio('audio/move.mp3');
-const musicSound = new Audio("audio/gameBg.mp3");
+
 let speed = 9;
 let score = 0;
 let lastPaintTime = 0;
@@ -44,29 +48,32 @@ function gameEngine() {
 
     if (isCollide(snakeArr)) {
         gameOverSound.play();
-        moveSound.pause();
         inputDir = { x: 0, y: 0 };
         alert("Game over , press any key to play again");
         snakeArr = [{ x: 13, y: 15 }]
-        // musicSound.play();
         score = 0;
     }
 
     //IF YOU HAVE EATEN THE FOOD , INCREMENT THE SCORE AND REGENRATE THE FOOD
     if (snakeArr[0].y == food.y && snakeArr[0].x == food.x) {
-        foodSound.play();
-        score += 1;
-        if (score > hiscore) {
-            hiscore = score;
-            localStorage.setItem("hiscore", JSON.stringify(hiscore));
-            hiscore.innerHTML = "HiScore: " + hiscore;
-        }
-        scoreBox.innerHTML = "Current score : " + score;
-        snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
-        let a = 2;
-        let b = 16;
-        food = { x: Math.round(a + (b - a) * Math.random()), y: Math.round(a + (b - a) * Math.random()) }
+    foodSound.play();
+    score += 1;
+
+    if (score > hiscore) {
+        hiscore = score;
+        localStorage.setItem("hiscore", JSON.stringify(hiscore));
+        hiscoreBox.innerHTML = "HiScore: " + hiscore;   // Update the **element**, not the number
     }
+
+    scoreBox.innerHTML = "Current score : " + score;
+
+    snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
+
+    let a = 2;
+    let b = 16;
+    food = { x: Math.round(a + (b - a) * Math.random()), y: Math.round(a + (b - a) * Math.random()) };
+}
+
 
     //MOVING THE SNAKE
     for (let i = snakeArr.length - 2; i >= 0; i--) {
@@ -104,17 +111,6 @@ function gameEngine() {
 
 //MAIN LOGIC
 
-// musicSound.play();
-let hiscore = localStorage.getItem('hiscore');
-
-if (hiscore == null) {
-    hiscoreval = 0;
-    localStorage.setItem('hiscore', JSON.stringify(hiscore)); 
-}
-else {
-    hiscoreval = JSON.parse(hiscore);
-    hiscoreBox.innerHTML = "HiScore: " + hiscore;
-}
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e => {
     inputDir = { x: 0, y: 1 } //start the game
@@ -148,3 +144,7 @@ window.addEventListener('keydown', e => {
             break;
     }
 });
+
+window.onload = () => {
+    hiscoreBox.innerHTML = "HiScore: " + hiscore;
+};
