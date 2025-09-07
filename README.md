@@ -42,6 +42,8 @@ A simple implementation of the classic **Snake Game** using **HTML**, **CSS**, a
 
 
 ---
+### Author
+[Rutuja Yadav](https://github.com/rutujayadav72)
 
 ##  Getting Started
 
@@ -56,7 +58,3 @@ cd snake-game
 start index.html    # Windows
 open index.html     # macOS
 
-
-
-## Author
-[Rutuja Yadav](https://github.com/rutujayadav72)
