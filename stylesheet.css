@@ -206,7 +206,7 @@ html {
 
 /* ========== RESPONSIVE DESIGN ========== */
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .touch-controls {
         display: none; /* Hide on desktop */
     }
@@ -229,8 +229,8 @@ html {
     #scoreBox,
     #hiscoreBox,
     #extra {
-        font-size: 24px;
-        padding: 14px;
+        font-size: 15px;
+        padding: 5px;
     }
 
     .play-game {
