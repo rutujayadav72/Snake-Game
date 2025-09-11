@@ -22,7 +22,9 @@ function main(ctime) {
         return;
     }
     lastPaintTime = ctime;
-    gameEngine();
+    if(document.getElementById('board')){
+        gameEngine();
+    }
 }
 
 function isCollide(snake) {
@@ -155,5 +157,7 @@ if (!('ontouchstart' in window)) {
 
 
 window.onload = () => {
-    hiscoreBox.innerHTML = "HiScore: " + hiscore;
+    if(document.getElementById('hisScoreBox')){
+        hiscoreBox.innerHTML = "HiScore: " + hiscore;
+    }
 };
