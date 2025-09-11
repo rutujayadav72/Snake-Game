@@ -145,6 +145,15 @@ window.addEventListener('keydown', e => {
     }
 });
 
+function setInputDir(x, y) {
+    inputDir = { x, y };
+    moveSound.play();
+}
+if (!('ontouchstart' in window)) {
+    document.getElementById('touchControls').style.display = 'none';
+}
+
+
 window.onload = () => {
     hiscoreBox.innerHTML = "HiScore: " + hiscore;
 };

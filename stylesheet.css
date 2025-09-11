@@ -177,8 +177,41 @@ html {
     color: #fff;
     display: block;
 }
+/* Touch Controls */
+.touch-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.touch-controls button {
+    font-size: 1em;
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #333;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.touch-controls div {
+    display: flex;
+    gap: 5px;
+}
+
 
 /* ========== RESPONSIVE DESIGN ========== */
+
+@media (min-width: 768px) {
+    .touch-controls {
+        display: none; /* Hide on desktop */
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
