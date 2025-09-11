@@ -151,13 +151,11 @@ function setInputDir(x, y) {
     inputDir = { x, y };
     moveSound.play();
 }
-if (!('ontouchstart' in window)) {
-    document.getElementById('touchControls').style.display = 'none';
-}
+
 
 
 window.onload = () => {
-    if(document.getElementById('hisScoreBox')){
+    if(document.getElementById('hiscoreBox')){
         hiscoreBox.innerHTML = "HiScore: " + hiscore;
     }
 };
